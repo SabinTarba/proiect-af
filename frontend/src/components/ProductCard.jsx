@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, increaseQuantity, decreaseQuantity } from '../store/slices/cartSlice';
-import { API_URL } from '../constants';
 
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const ProductCard = ({ product }) => {
 
         dispatch(addToCart(newCartItem));
         
-        await fetch(`${API_URL}/cart/update`, {
+        await fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/update`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -46,7 +45,7 @@ const ProductCard = ({ product }) => {
 
             dispatch(increaseQuantity(cartProduct.productId));
 
-            await fetch(`${API_URL}/cart/update`, {
+            await fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/update`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -75,7 +74,7 @@ const ProductCard = ({ product }) => {
 
             dispatch(decreaseQuantity(cartProduct.productId));
 
-            await fetch(`${API_URL}/cart/update`, {
+            await fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/update`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

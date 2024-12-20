@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { API_URL } from "../constants";
 
 
 const useCheckToken = (setToken, setIsLoggedIn) => {
@@ -7,7 +6,7 @@ const useCheckToken = (setToken, setIsLoggedIn) => {
         const token = localStorage.getItem('token');
 
         if (token) {
-            fetch(`${API_URL}/auth/check`, {
+            fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/check`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

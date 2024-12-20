@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { API_URL } from '../constants';
 import { useSelector } from 'react-redux';
 
 const Orders = () => {
@@ -9,7 +8,7 @@ const Orders = () => {
 
     useEffect(() => {
         const getOrders = async () => {
-            const response = await fetch(`${API_URL}/order/list`, {
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/order/list`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`

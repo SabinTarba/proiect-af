@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { API_URL } from '../constants';
 import { clearCart } from '../store/slices/cartSlice';
 
 export const Cart = () => {
@@ -14,7 +13,7 @@ export const Cart = () => {
   const totalPrice = cart.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
 
   const createOrder = async () => {
-    const response = await fetch(`${API_URL}/order/create`, {
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/order/create`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
@@ -35,7 +34,7 @@ export const Cart = () => {
   }
 
   const payOrder = async () => {
-    const response = await fetch(`${API_URL}/order/pay/${orderId}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/order/pay/${orderId}`, {
       method: 'POST',
       headers: {
           "Content-Type": "application/json",

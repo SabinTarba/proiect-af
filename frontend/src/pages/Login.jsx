@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import { API_URL } from '../constants';
 import { useDispatch } from "react-redux";
 import { setCheckTokenLoading, setLoggedIn, setToken } from '../store/slices/globalSlice';
 
@@ -19,7 +18,9 @@ export const Login = () => {
       return;
     }
 
-    const response = await fetch(`${API_URL}/auth/login`, {
+    console.log(process.env.REACT_APP_API_BASE_URL);
+    
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'

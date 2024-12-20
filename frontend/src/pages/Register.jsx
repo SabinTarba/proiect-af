@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { API_URL } from '../constants';
 
 export const Register = () => {
 
@@ -15,7 +14,7 @@ export const Register = () => {
   const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch(`${API_URL}/auth/register`, {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -82,7 +81,7 @@ export const Register = () => {
                         <input value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" name="lastName" id="lastName" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
                     </div>
                     <div>
-                        <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
+                        <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                         <input value={address} onChange={(e) => setAddress(e.target.value)} type="text" name="address" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
                     </div>
                     <button className="w-full text-white bg-orange-600 hover:bg-primary-700 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign Up</button>

@@ -9,7 +9,6 @@ import { Register } from "./pages/Register"
 import { Cart } from "./pages/Cart"
 import { useDispatch } from "react-redux";
 import { setLoggedIn, setToken } from './store/slices/globalSlice';
-import { API_URL } from './constants';
 import { recomputeCart } from './store/slices/cartSlice';
 import Orders from './pages/Orders';
 
@@ -24,7 +23,7 @@ function App() {
       dispatch(setLoggedIn(true));
       dispatch(setToken(storageToken));
 
-      fetch(`${API_URL}/cart`, {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/cart`, {
           method: 'GET',
           headers: {
             "Authorization": `Bearer ${storageToken}`

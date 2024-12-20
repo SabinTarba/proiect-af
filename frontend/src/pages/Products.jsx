@@ -5,7 +5,7 @@ export const Products = () => {
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
-    const response = await fetch(`https://dummyjson.com/products`, {
+    const response = await fetch(`${process.env.REACT_APP_PRODUCTS_API_URL}`, {
           method: 'GET'
         })
 
